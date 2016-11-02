@@ -2,3 +2,4 @@
 out/*
 DesignSchema.iml
 *.iml
+/bin/
