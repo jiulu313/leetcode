@@ -1,47 +1,43 @@
 package com.zhj.leetcode.array;
 
 import com.sun.java.swing.plaf.windows.WindowsBorders.DashedBorder;
+import com.sun.org.apache.regexp.internal.recompile;
 
 /**
- * 第三个最大值
+ * #414 第三个最大值
  *
  */
 public class ThirdMaxNumber {
 	public static void main(String[] args) {
-//		int[] data = new int[]{3,5,7,32,1,45,78,34,94,57,65};
-		int[] data = new int[]{1,1,2,5,6,7};
-		int third = thirdMaxNum(data);
-		System.out.println("thirdMaxNum="+third);
+		int[] data = new int[]{3,2,1,5,6,7,8};
+		System.out.println(thirdMaxNum(data));
+		
 	}
-	
-	
+
 	private static int thirdMaxNum(int[] data) {
-		int first  = data[0];
-		int secode = data[0];
-		int third  = data[0];
-		
-		for(int i = 1;i<data.length;i++){
-			if(data[i] > first){
-				secode = first;
-				first = data[i];
-			}else if(data[i] >= secode){
-				third = secode;
-				secode = data[i];
-			}else if(data[i] >= third) {
-				third = data[i];
-			}
+		if (data.length == 1) {
+			return data[0];
 		}
-		
-		return secode == third ? first : third;
+
+		if (data.length == 2) {
+			return data[0] > data[1] ? data[0] : data[1];
+		}
+
+		int pos = 0;
+		for (int i = 0; i < 3; i++) {
+			pos = i;
+			for (int j = i + 1; j < data.length; j++) {
+				if (data[j] > data[pos]) {
+					pos = j;
+				}
+			}
+			
+			int temp = data[i];
+			data[i] = data[pos];
+			data[pos] = temp;
+		}
+
+		return data[pos];
 	}
 
 }
-
-
-
-
-
-
-
-
-
