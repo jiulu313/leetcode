@@ -59,6 +59,8 @@ public class HasOrderSearch {
 	//斐波那契查找 
 	public static int fibonacciSearch(int[] data,int value) {
 		
+		
+		return -1;
 	}
 	
 	
